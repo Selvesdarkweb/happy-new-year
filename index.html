@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WISH YOU HAPPY NEW YEAR</title>
+    <script>
+        function PromptIN() {
+            var PName = prompt("ENTER YOUR NAME");
+            document.getElementById("LINE").innerHTML = "HAPPY NEW YEAR" + " " + PName;
+            
+
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        #LINE {
+            color: gold;
+            text-transform: uppercase;
+            font-size:10vh;
+            background-color:transparent;
+            font-family: 'Playfair Display', serif;
+            margin-top: 200px;
+              }
+              #button{
+                border-radius: 25px;
+                background-color: transparent;
+                color: gold;
+                height: 50px;
+                width: 20%;
+                font-size: 5vh;
+                border-color: crimson;
+                border-right:2px solid black;
+            }
+            body{
+                background-image: url('https://media.istockphoto.com/photos/festive-silvester-new-years-eve-party-background-greeting-card-golden-picture-id1391178054?b=1&k=20&m=1391178054&s=170667a&w=0&h=YHn-hMIeKJqDLO0B1WRUNDCRQJA35H1v6WPgfdC_i7A=');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            marquee{
+                text-align: center;
+                margin-top: 10px;
+            }
+            .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #155738 0%,
+    #ff9203 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 10vh;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+#s1{
+    height: 200px;
+    margin-top: 100px;
+}
+    </style>
+</head>
+<body>
+    <center>
+    <input type="button" id="button" value="CLICK" onclick="PromptIN()" />
+    <br>
+    <div class="demo">
+        <marquee direction="up" duration="10s" scrollmount="1">
+        <h4 class="animate-charcter">નવા વર્ષની શુભેચ્છા</h4>
+        </marquee>
+        <span class="swastic">
+            <img src="swastik-icon.png" id="s1">
+        </span>
+    <div id="LINE"></div>
+        </center>
+    </div>
+</body>
+
+</html>
