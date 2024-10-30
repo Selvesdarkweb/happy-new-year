@@ -1,94 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WISH YOU HAPPY NEW YEAR</title>
-    <script>
-        function PromptIN() {
-            var PName = prompt("ENTER YOUR NAME");
-            document.getElementById("LINE").innerHTML = "HAPPY NEW YEAR" + " " + PName;
-            
-
-        }
-    </script>
+    <title>Happy New Year Wishes</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-        #LINE {
-            color: gold;
-            text-transform: uppercase;
-            font-size:10vh;
-            background-color:transparent;
-            font-family: 'Playfair Display', serif;
-            margin-top: 200px;
-              }
-              #button{
-                border-radius: 25px;
-                background-color: transparent;
-                color: gold;
-                border-color: crimson;
-                border-right:2px solid black;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1a1a1a;
+            color: white;
+            overflow: hidden;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        #fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            background: transparent;
+        }
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff0;
+            border-radius: 50%;
+            animation: explode 1s forwards;
+        }
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
             }
-            body{
-                background-image: url('https://media.istockphoto.com/photos/festive-silvester-new-years-eve-party-background-greeting-card-golden-picture-id1391178054?b=1&k=20&m=1391178054&s=170667a&w=0&h=YHn-hMIeKJqDLO0B1WRUNDCRQJA35H1v6WPgfdC_i7A=');
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
+            100% {
+                transform: scale(4);
+                opacity: 0;
             }
-            marquee{
-                text-align: center;
-                margin-top: 10px;
-            }
-            .animate-charcter
-{
-   text-transform: uppercase;
-  background-image: linear-gradient(
-    -225deg,
-    #155738 0%,
-    #ff9203 29%,
-    #ff1361 67%,
-    #fff800 100%
-  );
-  background-size: auto auto;
-  background-clip: border-box;
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
-  display: inline-block;
-      font-size: 10vh;
-}
-
-@keyframes textclip {
-  to {
-    background-position: 200% center;
-  }
-}
-#s1{
-    height: 200px;
-    margin-top: 100px;
-}
+        }
+        .diwali {
+            display: inline-block;
+            font-size: 40px;
+            margin: 20px 0;
+            animation: flicker 0.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 100% { color: orange; }
+            50% { color: gold; }
+        }
     </style>
 </head>
 <body>
-    <center>
-    <input type="button" id="button" value="CLICK" onclick="PromptIN()" />
-    <br>
-    <div class="demo">
-        <marquee direction="up" duration="10s" scrollmount="1">
-        <h4 class="animate-charcter">નવા વર્ષની શુભેચ્છા</h4>
-        </marquee>
-        <span class="swastic">
-            <img src="swastik-icon.png" id="s1">
-        </span>
-    <div id="LINE"></div>
-        </center>
-    </div>
-</body>
+    <h1>Enter Your Name:</h1>
+    <input type="text" id="nameInput" placeholder="Your Name">
+    <button onclick="wish()">Wish Me!</button>
+    <div id="message"></div>
+    <div id="fireworks"></div>
 
+    <script>
+        function wish() {
+            const name = document.getElementById("nameInput").value;
+            const messageDiv = document.getElementById("message");
+            messageDiv.innerHTML = `<h2>Happy New Year, ${name}!</h2><div class="diwali">✨🪔✨</div><p>From Kush Mevada</p>`;
+            createFireworks();
+        }
+
+        function createFireworks() {
+            const fireworksContainer = document.getElementById("fireworks");
+            for (let i = 0; i < 20; i++) {
+                const firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = Math.random() * 100 + 'vw';
+                firework.style.top = Math.random() * 100 + 'vh';
+                fireworksContainer.appendChild(firework);
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+            }
+        }
+    </script>
+</body>
 </html>
