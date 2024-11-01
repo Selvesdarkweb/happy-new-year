@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,25 +23,13 @@
             pointer-events: none;
             top: 0;
             left: 0;
-            background: transparent;
+            display: none; /* Initially hidden */
         }
         .firework {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: url('https://media.tenor.com/images/4c605fd01b93b12e5d8f364a5e2e45bc/tenor.gif');
-            border-radius: 50%;
-            animation: explode 1s forwards;
-        }
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(4);
-                opacity: 0;
-            }
+            width: 100px; /* Adjust the size of the GIF */
+            height: 100px; /* Adjust the size of the GIF */
+            background: transparent;
         }
         .diwali {
             display: inline-block;
@@ -54,6 +43,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Enter Your Name:</h1>
     <input type="text" id="nameInput" placeholder="Your Name">
@@ -71,17 +61,22 @@
 
         function createFireworks() {
             const fireworksContainer = document.getElementById("fireworks");
+            fireworksContainer.style.display = "block"; // Show the fireworks container
             for (let i = 0; i < 20; i++) {
-                const firework = document.createElement("div");
+                const firework = document.createElement("img");
+                firework.src = 'https://media.tenor.com/images/4c605fd01b93b12e5d8f364a5e2e45bc/tenor.gif'; // GIF URL
                 firework.className = "firework";
                 firework.style.left = Math.random() * 100 + 'vw';
                 firework.style.top = Math.random() * 100 + 'vh';
                 fireworksContainer.appendChild(firework);
+                
+                // Remove the GIF after 1 second
                 setTimeout(() => {
                     firework.remove();
-                }, 1000);
+                }, 1000); 
             }
         }
     </script>
 </body>
+
 </html>
