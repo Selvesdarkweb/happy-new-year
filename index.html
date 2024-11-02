@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,6 +42,23 @@
             0%, 100% { color: orange; }
             50% { color: gold; }
         }
+        marquee {
+            position: absolute;
+            bottom: 20px; /* Position above the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            background: linear-gradient(90deg, red, gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-message {
+            font-size: 32px;
+            margin: 20px 0;
+            background: linear-gradient(90deg, red, gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 
@@ -51,31 +68,42 @@
     <button onclick="wish()">Wish Me!</button>
     <div id="message"></div>
     <div id="fireworks"></div>
+    <marquee id="newYearMarquee" direction="up" duration="10s" scrollmount="1" style="display: none;">
+        <h4 class="animate-charcter">નવા વર્ષની શુભેચ્છા</h4>
+    </marquee>
 
     <script>
         function wish() {
             const name = document.getElementById("nameInput").value;
             const messageDiv = document.getElementById("message");
-            messageDiv.innerHTML = `<h2>Happy New Year, ${name}!</h2><div class="diwali">✨🪔✨</div><p>From Kush Mevada</p>`;
+            messageDiv.innerHTML = `<h2 class="gradient-message">Happy New Year, ${name}!</h2><p>From Kush Mevada</p>`;
             createFireworks();
         }
 
         function createFireworks() {
             const fireworksContainer = document.getElementById("fireworks");
+            const marquee = document.getElementById("newYearMarquee");
             fireworksContainer.style.display = "block"; // Show the fireworks container
+            marquee.style.display = "block"; // Show the marquee
+
             for (let i = 0; i < 20; i++) {
                 const firework = document.createElement("img");
-                firework.src = 'happy-new-year-2019.gif'
+                firework.src = 'happy-new-year-2019.gif'; // Replace with your GIF path
                 firework.className = "firework";
                 firework.style.left = Math.random() * 100 + 'vw';
                 firework.style.top = Math.random() * 100 + 'vh';
                 fireworksContainer.appendChild(firework);
                 
-                // Remove the GIF after 1 second
+                // Remove the GIF after 5 seconds
                 setTimeout(() => {
                     firework.remove();
                 }, 5000); 
             }
+
+            // Hide marquee after 10 seconds
+            setTimeout(() => {
+                marquee.style.display = "none";
+            }, 10000);
         }
     </script>
 </body>
